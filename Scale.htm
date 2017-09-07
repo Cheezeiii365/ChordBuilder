@@ -45,16 +45,21 @@
 
                 var Scale = document.getElementById("KeyInput").value;
 
+                var chordNumbers = ""
                 var Notes = ""
                 for (var index = 0; index < ChordType[Chord].length; index++) {
                     var element = ChordType[Chord][index];
                     Notes += scales[Scale][element-1];
                     Notes += " ";
+                    chordNumbers += ChordType[Chord][element-1];
+                    chordNumbers += " ";
+                    alert(chordNumbers)
 
                     document.getElementById("NoteOutput").innerHTML = Notes;
+
                 }
 
-                document.getElementById("ChordOutput").innerHTML = ChordType[Chord];
+                document.getElementById("ChordOutput").innerHTML = chordNumbers;
 
 
             }
