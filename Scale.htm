@@ -1,13 +1,47 @@
 <html>
     <body>
-        <input type="text" id="KeyInput"=> Write key.</input>
-        <input type="text" id="ChordInput"=> Write chord.</input>
+        <select id=KeyInput></select>
+        <select id=ChordInput></select>
         <button onclick="test()">Submit</button>
-        <div id="NoteOutput"></div> 
-        <p> Chords are formatted : </br> Triad </br> 7 </br> 5 Chord, etc </p>
+        <div id="NoteOutput"></div>
+        <div id="ChordOutput"></div>
+        <p><h1>How to use: </p>
+        <p><h3>This program outputs chords in a selected key. <br> Use the first dropdown menu to select the key, then, use the second one to select the chord.
+        <br> Click submit and recive the requested chord.</p>
+        <hr>
+        <p>
+            <h4>Patchnotes:
+                <br><h5> Version 2.6
+                <br>+ C, D, E, F, G, A, B, minor scales
+                <br>+ Code cleaned
+                <br>* UI work in progress
+        </p>
+        <div id="grad"></div>
+        <style>
+            hr {
+                display: block;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+                margin-left: auto;
+                margin-right: auto;
+                border-style: inset;
+                border-width: 1px;
+            }
+                #grad {
+                     height: 600px;
+                    background: blue; /* For browsers that do not support gradients */
+                    background: -webkit-linear-gradient(white, tan, blue); /* For Safari 5.1 to 6.0 */
+                    background: -o-linear-gradient(white, tan, blue); /* For Opera 11.1 to 12.0 */
+                    background: -moz-linear-gradient(white, tan, blue); /* For Firefox 3.6 to 15 */
+                    background: linear-gradient(white, tan, blue); /* Standard syntax (must be last) */
+                }
+
+        </style>
         <script>
+
             function test() {
 
+<<<<<<< HEAD
                 var ChordType = {};
                 ChordType["Triad"] = [1, 3, 5];
                 ChordType["Second"] = [1, 2];
@@ -36,21 +70,84 @@
                 scales["A"] = ["A", "B", "C#", "D", "E", "F#", "G#", "A"];
                 scales["B"] = ["B", "C#", "D#", "E", "F#", "G#", "A#", "B"];
     
+=======
+>>>>>>> StyleingUI
                 var Chord = document.getElementById("ChordInput").value;
-
+ 
                 var Scale = document.getElementById("KeyInput").value;
-                
+
+                var chordNumbers = ""
                 var Notes = ""
                 for (var index = 0; index < ChordType[Chord].length; index++) {
                     var element = ChordType[Chord][index];
                     Notes += scales[Scale][element-1];
                     Notes += " ";
-            
+                    chordNumbers += element;
+                    chordNumbers += " ";
+                    // alert(alert(chordNumbers))
+
                     document.getElementById("NoteOutput").innerHTML = Notes;
+
                 }
+
+                document.getElementById("ChordOutput").innerHTML = chordNumbers;
+
+
             }
-    
-    
+// Comment -- Test
+
+            var ChordType = {};
+            ChordType["Triad"] = [1, 3, 5];
+            ChordType["Second"] = [1, 2];
+            ChordType["Third"] = [1, 3];
+            ChordType["Fourth"] = [1, 4];
+            ChordType["Fifth"] = [1, 5];
+            ChordType["Sixth"] = [1, 6];
+            ChordType["Seventh"] = [1, 7];
+            ChordType["2 chord"] = [2, 4, 6];
+            ChordType["3 chord"] = [3, 5, 7];
+            ChordType["4 chord"] = [4, 6, 8];
+            ChordType["5 chord"] = [5, 7, 2];
+            ChordType["6 chord"] = [6, 8, 3];
+            ChordType["7 chord"] = [7, 1, 4];
+            ChordType["7"] = [1, 3, 5, 7];
+            ChordType["Scale"] = [1, 2, 3, 4, 5, 6, 7, 8];
+
+            var scales = {};
+            scales["C"] = ["C", "D", "E", "F", "G", "A", "B", "C"];
+            scales["Cm"] = ["C", "D", "Eb", "F", "G", "A", "B", "C"]
+            scales["D"] = ["D", "E", "F#", "G", "A", "B", "C#", "D"];
+            scales["Dm"] = ["D", "E", "F", "G", "A", "B", "C#", "D"];
+            scales["E"] = ["E", "F#", "G#", "A", "B", "C#", "D", "E"];
+            scales["Em"] = ["E", "F#", "G", "A", "B", "C#", "D", "E"];
+            scales["F"] = ["F", "G", "A", "Bb", "C", "D", "E", "F"];
+            scales["Fm"] = ["F", "G", "Ab", "Bb", "C", "D", "E", "F"];
+            scales["G"] = ["G", "A", "B", "C", "D", "E", "F#", "G"];
+            scales["Gm"] = ["G", "A", "A#", "C", "D", "E", "F#", "G"];
+            scales["A"] = ["A", "B", "C#", "D", "E", "F#", "G#", "A"];
+            scales["Am"] = ["A", "B", "C", "D", "E", "F#", "G#", "A"];
+            scales["B"] = ["B", "C#", "D#", "E", "F#", "G#", "A#", "B"];
+            scales["Bm"] = ["B", "C#", "D", "E", "F#", "G#", "A#", "B"];
+
+
+
+            var keyInput = document.getElementById("KeyInput");
+            for (var scale in scales) {
+                var opt = document.createElement('option');
+                opt.value = scale;
+                opt.innerHTML = scale;
+                keyInput.appendChild(opt);
+            }
+
+            var chordInput = document.getElementById("ChordInput");
+            for (var chord in ChordType) {
+                var opt = document.createElement('option');
+                opt.value = chord;
+                opt.innerHTML = chord;
+                chordInput.appendChild(opt)
+               // alert(chord)
+            }
+
         </script>
     </body>
 </html>
